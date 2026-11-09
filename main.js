@@ -1,5 +1,13 @@
 document.documentElement.classList.add('js');
 
+/* ───────── 카카오톡 채널 ─────────
+   채널을 만든 뒤 아래 한 줄만 바꾸면 사이트의 모든 카톡 버튼이 연결됩니다.
+   채널 관리자센터 > 채널 URL 이 https://pf.kakao.com/_AbCdE 라면 '_AbCdE' 를 넣으세요. */
+const KAKAO_CHANNEL = '_XXXXXX';
+const KAKAO_READY = !/X{4,}/.test(KAKAO_CHANNEL);
+const kakaoUrl = (kind) => `https://pf.kakao.com/${KAKAO_CHANNEL}/${kind}`;
+document.querySelectorAll('[data-kakao]').forEach((a) => { a.href = kakaoUrl(a.dataset.kakao); });
+
 /* ───────── 진단기 ─────────
    규정 수치는 research 자료(2026-11-09 기준)에서 가져옴. 규정이 바뀌면 RESULTS만 고치면 됨. */
 const Q = {
@@ -58,7 +66,7 @@ const RESULTS = {
     rows: [['상한 없음', '수도권·규제지역이 아니면 한도는 금융사가 정합니다'], ['DSR 40%', '은행 기준, 2금융권은 50%'], ['3.6억', '주택 6억 이하·부부 소득 7천만 원 이하라면 보금자리론 반환 용도도 가능']] }),
   R_multi: () => ({ v: 'no', label: '원칙상 어려움', title: '수도권 2주택 이상은 반환 목적 주담대가 막혀 있습니다',
     rows: [['불가', '수도권·규제지역 2주택 이상 생활안정자금 주담대 (2025.6.28 시행)'], ['확인', '분양권·상속·인구감소지역 주택처럼 주택 수에서 빠지는 집이 있는지'], ['확인', '지방에 있는 주택을 담보로 쓸 수 있는지']],
-    cta: '대안 확인 상담 신청' }),
+    cta: '카톡으로 대안 묻기' }),
   R_cap: (a) => ({ v: 'maybe', label: '1억까지 가능', title: '수도권 1주택은 1억이 상한입니다',
     rows: [['1억', '기존 생활안정자금 대출과 합산한 금액'], ['LTV 40%', '서울 등 규제지역 기준 · 경기·인천 비규제지역은 금융사 확인'], ['함께 검토', '주택금융공사 반환자금보증, 보금자리론 반환 용도(주택 6억 이하)']],
     note: a.changed === '예' ? '계약 중에 집주인이 바뀌면 6·27 이전 계약 예외를 인정받지 못한다는 해석이 있습니다. 은행 확인이 필요합니다.' : '' }),
@@ -74,7 +82,7 @@ const RESULTS = {
     rows: [['최대 4억', '주택금융공사 보증 기준, 보증금의 80% 이내'], ['확인', '소득과 신용으로 실제 한도가 정해집니다']] }),
   R_t_multi: () => ({ v: 'no', label: '원칙상 불가', title: '부부 합산 2주택 이상은 전세보증이 나오지 않습니다',
     rows: [['불가', '주택금융공사·주택도시보증공사·서울보증 모두 원칙상 불가'], ['재진단', '한 채를 처분해 1주택이 되면 다시 가능'], ['다른 길', '세놓은 집의 보증금 반환대출이 필요하다면 집주인으로 진단']],
-    cta: '처분 계획 상담 신청', alt: { t: '집주인으로 다시 진단', go: 'owner', set: { who: '집주인' } } }),
+    cta: '카톡으로 처분 계획 묻기', alt: { t: '집주인으로 다시 진단', go: 'owner', set: { who: '집주인' } } }),
   R_t_local: () => ({ v: 'go', label: '가능', title: '지방에 집 1채면 2억까지 검토합니다',
     rows: [['2억', '주택금융공사 1주택자 한도 (지방)'], ['80%', '보증금의 80% 이내'], ['확인', '소득으로 실제 한도 결정']] }),
   R_t_metro: () => ({ v: 'maybe', label: '가능, 한도 제한', title: '수도권 1주택자는 2억까지, 이자가 DSR에 들어갑니다',
@@ -128,8 +136,9 @@ function showResult(id) {
   body.innerHTML = `<span class="verdict verdict--${r.v}">${r.label}</span>
     <p class="res__title">${r.title}</p>
     <ul class="res__rows">${r.rows.map(([b, t]) => `<li><b>${b}</b><span>${t}</span></li>`).join('')}</ul>
-    <div class="res__cta"><button type="button" class="btn" id="toConsult">${r.cta || '이 결과로 상담 신청'}</button>
-    ${r.alt ? `<button type="button" class="btn btn--small linklike" id="altPath" style="background:none;color:var(--ink)">${r.alt.t}</button>` : ''}</div>
+    <div class="res__cta"><a class="btn btn--kakao" data-kakao="chat" data-copy href="${kakaoUrl('chat')}" target="_blank" rel="noopener">${r.cta || '카카오톡으로 이 결과 상담'}</a>
+    <button type="button" class="linklike res__alt" id="toConsult">전화번호 남기기</button>
+    ${r.alt ? `<button type="button" class="linklike res__alt" id="altPath">${r.alt.t}</button>` : ''}</div>
     ${r.note ? `<p class="res__note">${r.note}</p>` : ''}
     <p class="res__note">${esc(summary())} · 2026.11.9 규정 기준, 실제 한도는 금융사 심사로 정해집니다.</p>`;
   bar(STEPS);
@@ -149,8 +158,11 @@ back.addEventListener('click', () => {
   show(prev ? prev.node : 'start');
 });
 
+function diagnosisText() {
+  return lastResult ? `${lastResult.label} — ${summary()}` : '';
+}
 function carryToConsult() {
-  const text = `${lastResult.label} — ${summary()}`;
+  const text = diagnosisText();
   document.getElementById('diagnosis').value = text;
   const carry = document.getElementById('carry');
   carry.textContent = `함께 전달되는 진단 결과: ${text}`;
@@ -263,3 +275,37 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
   pic.classList.add('shutter');
   io.observe(pic);
 }
+
+/* ───────── 카톡 버튼: 진단 결과를 복사해 두고 채팅창을 엶 ───────── */
+const toast = Object.assign(document.createElement('p'), { className: 'toast', role: 'status' });
+document.body.append(toast);
+function say(t) {
+  toast.textContent = t;
+  toast.classList.add('on');
+  clearTimeout(say.t);
+  say.t = setTimeout(() => toast.classList.remove('on'), 4000);
+}
+function copy(text) {
+  if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text).catch(() => {});
+  const ta = Object.assign(document.createElement('textarea'), { value: text });
+  document.body.append(ta); ta.select();
+  try { document.execCommand('copy'); } catch {}
+  ta.remove();
+}
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('[data-kakao="chat"]');
+  if (!a) return;
+  if (!KAKAO_READY) {
+    e.preventDefault();
+    say('카카오톡 채널 주소가 아직 연결되지 않았습니다. (오픈 전 설정)');
+    return;
+  }
+  const d = diagnosisText();
+  if (d) {
+    copy(`[사이트 진단 결과]\n${d}\n(2026.11.9 규정 기준)`);
+    const carry = document.getElementById('carry');
+    carry.textContent = `복사된 진단 결과: ${d}`;
+    carry.hidden = false;
+    say('진단 결과를 복사했습니다. 채팅창에 붙여넣기 하세요.');
+  }
+});

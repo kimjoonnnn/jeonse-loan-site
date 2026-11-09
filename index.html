@@ -22,7 +22,7 @@
     <a href="#cases">상황별 기준</a>
     <a href="#faq">자주 묻는 질문</a>
   </nav>
-  <a class="btn btn--small" href="#consult">상담 신청</a>
+  <a class="btn btn--small btn--kakao" data-kakao="chat" href="https://pf.kakao.com/_XXXXXX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
 </header>
 
 <main id="top">
@@ -32,7 +32,7 @@
   <div class="hero__copy">
     <h1 id="hero-title">세입자 보증금,<br>대출로 될까요?</h1>
     <p class="hero__lead">계약일, 주택 수, 지역만 고르면 지금 규정으로 되는지 바로 나옵니다. 전세퇴거자금이 필요한 집주인, 집이 있는데 전세를 구하는 분 모두 해당됩니다.</p>
-    <a class="btn" href="#consult">진단 없이 바로 상담 신청</a>
+    <a class="btn btn--kakao" data-kakao="chat" href="https://pf.kakao.com/_XXXXXX/chat" target="_blank" rel="noopener">진단 없이 카카오톡 상담</a>
     <p class="hero__date">2026년 11월 9일 시행 규정 기준</p>
     <dl class="trust">
       <!-- TODO: 실제 수치로 교체. 근거 없는 숫자는 광고 규정 위반 -->
@@ -53,7 +53,7 @@
       <div class="quiz__body" id="quizBody">
         <!-- main.js가 질문을 그림. 스크립트가 없으면 아래 안내가 보임 -->
         <p class="quiz__q">진단은 브라우저 스크립트가 필요합니다.</p>
-        <a class="btn" href="#consult">상담 신청으로 이동</a>
+        <a class="btn btn--kakao" data-kakao="chat" href="https://pf.kakao.com/_XXXXXX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
       </div>
       <div class="quiz__foot" id="quizFoot"></div>
     </div>
@@ -69,7 +69,7 @@
 <section class="cases" id="cases" aria-labelledby="cases-title">
   <div class="cases__head">
     <h2 id="cases-title"><span class="soft">같은 대출도</span><br>집 수와 계약일로 갈립니다</h2>
-    <a class="btn" href="#consult">내 경우 상담받기</a>
+    <a class="btn btn--kakao" data-kakao="chat" href="https://pf.kakao.com/_XXXXXX/chat" target="_blank" rel="noopener">내 경우 카톡으로 묻기</a>
   </div>
 
   <div class="cases__grid">
@@ -149,11 +149,11 @@
   <h2 id="flow-title">상담하면 받는 것</h2>
 
   <div class="ex">
-    <p class="ex__say">먼저, 연락처를 남기세요.</p>
-    <div class="ex__call" data-ui><span class="field-fake">010-2481-0000</span><span class="tag">진단 결과 함께 전송</span></div>
-    <div class="ex__res sms" data-ui>
-      <p class="sms__from">[상호명]</p>
-      <p>상담 신청이 접수됐습니다. 담당 상담사 김○○(대출모집인 등록번호 ○○○○)가 오늘 오후 6시 전에 전화드립니다.</p>
+    <p class="ex__say">먼저, 카카오톡으로 진단 결과를 보내세요.</p>
+    <div class="ex__call chat" data-ui><p class="bubble bubble--me">1억 초과 검토 대상 — 집주인 · 개인 · 서울 · 1채 · 계약 2023.7.4–2025.6.27</p></div>
+    <div class="ex__res chat" data-ui>
+      <p class="sms__from">[채널명]</p>
+      <p class="bubble">상담사 김○○입니다 (대출모집인 등록번호 ○○○○). 보내주신 결과 확인했습니다. 집을 산 날과 지금 전세계약일을 알려 주시겠어요?</p>
     </div>
   </div>
 
@@ -213,21 +213,26 @@
 
 <!-- 상담 신청: 칸 하나 -->
 <section class="consult" id="consult" aria-labelledby="consult-title">
-  <h2 id="consult-title"><span class="soft">진단 결과는 상담사가 이어서 봅니다.</span><br>번호만 남겨 주세요.</h2>
+  <h2 id="consult-title"><span class="soft">진단 결과를 들고</span><br>카카오톡으로 물어보세요.</h2>
   <p class="consult__carry" id="carry" hidden></p>
+  <div class="kakao">
+    <a class="btn btn--kakao btn--big" data-kakao="chat" data-copy href="https://pf.kakao.com/_XXXXXX/chat" target="_blank" rel="noopener">카카오톡 상담 시작</a>
+    <p class="one__next">진단을 했다면 결과가 복사되어 있습니다. 채팅창에 붙여넣기만 하세요. 평일 9시 – 18시에는 바로 답하고, 그 밖의 시간에는 다음 영업일 오전에 답합니다. 상담 중 신용조회는 하지 않으며 주민등록번호는 묻지 않습니다.</p>
+  </div>
+  <h3 class="consult__alt">카톡이 어렵다면 번호를 남겨 주세요</h3>
   <form class="one" id="consultForm" action="" method="post" novalidate>
     <input type="hidden" name="diagnosis" id="diagnosis">
     <label class="sr" for="phone">휴대폰 번호</label>
     <div class="one__row">
       <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" required aria-describedby="consult-next">
-      <button type="submit" aria-label="상담 신청하기">신청</button>
+      <button type="submit" aria-label="전화 상담 신청하기">신청</button>
     </div>
     <label class="agree"><input type="checkbox" name="agree" required> <span>[필수] 상담을 위한 개인정보 수집·이용에 동의합니다. <button type="button" class="linklike" data-open="privacy">내용 보기</button></span></label>
     <p class="one__next" id="consult-next">영업일 기준 당일 전화드립니다. 신청 단계에서는 신용조회를 하지 않습니다.</p>
     <p class="one__msg" id="formMsg" role="status"></p>
   </form>
   <dl class="reach">
-    <div><dt>전화 대신</dt><dd><a href="#" rel="noopener">카카오톡으로 상담하기</a></dd></div>
+    <div><dt>카카오톡 채널</dt><dd><a data-kakao="friend" href="https://pf.kakao.com/_XXXXXX/friend" target="_blank" rel="noopener">[채널명] 채널 추가</a> · 추가해 두면 나중에 다시 찾기 쉽습니다</dd></div>
     <div><dt>바로 통화</dt><dd><a href="tel:00000000000">000-0000-0000</a> · 평일 9시 – 18시</dd></div>
     <div><dt>담당 상담사</dt><dd>[성명] · 대출모집인 등록번호 [제0000호] · <a href="https://www.loanconsultant.or.kr" target="_blank" rel="noopener">등록 조회</a></dd></div>
   </dl>
@@ -248,15 +253,15 @@
   </div>
   <div class="foot__line">
     <span>전세퇴거자금 · 유주택자 전세대출 상담</span>
-    <span class="foot__links"><a href="#check">진단</a><a href="#faq">질문</a><a href="#consult">상담 신청</a></span>
+    <span class="foot__links"><a href="#check">진단</a><a href="#faq">질문</a><a data-kakao="chat" href="https://pf.kakao.com/_XXXXXX/chat" target="_blank" rel="noopener">카카오톡 상담</a></span>
     <span>© 2026 · <button type="button" class="linklike" data-open="privacy">개인정보처리방침</button></span>
   </div>
 </footer>
 
 <div class="mbar" id="mbar">
+  <a href="#check">진단</a>
   <a href="tel:00000000000">전화</a>
-  <a href="#" rel="noopener">카카오톡</a>
-  <a href="#consult" class="mbar__main">상담 신청</a>
+  <a class="mbar__main" data-kakao="chat" data-copy href="https://pf.kakao.com/_XXXXXX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
 </div>
 
 <dialog id="privacy" aria-labelledby="privacy-title">
