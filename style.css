@@ -295,3 +295,10 @@ dialog p{font-size:16px;margin:16px 0 20px}
   .mbar .mbar__main{background:#fee500;color:#191919}
   .btn--big{width:100%}
 }
+/* 폰: 진단기를 신뢰 정보보다 먼저 보여 줌 */
+@media (max-width:900px){
+  .hero{display:flex;flex-direction:column}
+  .hero__copy{display:contents}
+  .stage{order:1}
+  .trust{order:2;margin-top:28px}
+}
