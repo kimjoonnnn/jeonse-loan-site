@@ -198,7 +198,7 @@ tabs.forEach((t, i) => {
 /* ───────── FAQ: 넓은 화면은 오른쪽 답 하나, 좁은 화면은 아래로 펼침 ───────── */
 const pane = document.getElementById('faqPane');
 const qs = [...document.querySelectorAll('#faqList button')];
-const wide = matchMedia('(min-width: 901px)');
+const wide = { matches: false }; // 질문 아래로 펼치는 방식만 사용
 function pick(b, toggle) {
   if (wide.matches) {
     qs.forEach((x) => x.setAttribute('aria-expanded', x === b));
