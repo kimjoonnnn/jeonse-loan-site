@@ -173,25 +173,25 @@ function carryToConsult() {
 
 show('start');
 
-/* ───────── 상황별 탭 ───────── */
-const tabs = [...document.querySelectorAll('[role="tab"]')];
-function selectTab(t) {
-  tabs.forEach((x) => {
+/* ───────── 탭 (상황별 기준 · 상품 안내) ───────── */
+document.querySelectorAll('[role="tablist"]').forEach((list) => {
+  const tabs = [...list.querySelectorAll('[role="tab"]')];
+  const selectTab = (t) => tabs.forEach((x) => {
     const on = x === t;
     x.setAttribute('aria-selected', on);
     x.tabIndex = on ? 0 : -1;
     document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
   });
-}
-tabs.forEach((t, i) => {
-  t.addEventListener('click', () => selectTab(t));
-  t.addEventListener('keydown', (e) => {
-    const d = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
-    if (!d) return;
-    e.preventDefault();
-    const n = tabs[(i + d + tabs.length) % tabs.length];
-    n.focus();
-    selectTab(n);
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => selectTab(t));
+    t.addEventListener('keydown', (e) => {
+      const d = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+      if (!d) return;
+      e.preventDefault();
+      const n = tabs[(i + d + tabs.length) % tabs.length];
+      n.focus();
+      selectTab(n);
+    });
   });
 });
 

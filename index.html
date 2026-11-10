@@ -11,7 +11,7 @@
 <meta property="og:image" content="assets/img/daechi.jpg">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 
@@ -188,49 +188,148 @@
 <!-- 상품 안내 -->
 <section class="prod" id="products" aria-labelledby="prod-title">
   <div class="prod__head">
-    <h2 id="prod-title"><span class="soft">상담하는 상품은</span><br>세 가지입니다</h2>
-    <p class="prod__date">2026년 11월 기준 · 금리와 한도는 심사에 따라 달라집니다</p>
+    <h2 id="prod-title"><span class="soft">상담하는</span><br>대출 상품</h2>
+    <p class="prod__date">변동금리 · 2026년 11월 기준 · 금리와 한도는 신용점수, 선·후순위, 규제지역 여부와 심사에 따라 달라집니다</p>
   </div>
-  <div class="prod__grid">
-    <article class="pcard">
-      <p class="pcard__tag">집주인 · 전세퇴거자금</p>
-      <h3>임차보증금담보대출</h3>
-      <p class="pcard__rate"><b>연 5.2 – 5.7%</b></p>
-      <dl class="kv">
-        <div><dt>대출기간</dt><dd>전세기간</dd></div>
-        <div><dt>상환방법</dt><dd>만기일시상환<small>상환계획을 등록하면 일부 분할상환</small></dd></div>
-        <div><dt>중도상환수수료</dt><dd>0.65% (2년)</dd></div>
-      </dl>
-    </article>
-    <article class="pcard">
-      <p class="pcard__tag">집 있는 세입자 · 전세자금</p>
-      <h3>전세금담보대출</h3>
-      <p class="pcard__rate"><b>보증금의 최대 80%</b></p>
-      <dl class="kv">
-        <div><dt>1주택자</dt><dd>2억 원 이내<small>DSR 반영</small></dd></div>
-        <div><dt>취급 제한</dt><dd>규제지역 3억 초과 아파트 취득자<small>2025.10.20 이후 취득분</small></dd></div>
-        <div><dt>상환방법</dt><dd>만기일시상환</dd></div>
-      </dl>
-    </article>
-    <article class="pcard">
-      <p class="pcard__tag">집을 담보로 · 생활안정자금</p>
-      <h3>주택담보 가계대출</h3>
-      <p class="pcard__rate"><b>연 5.2 – 5.7%</b></p>
-      <dl class="kv">
-        <div><dt>대출기간</dt><dd>최초 360개월</dd></div>
-        <div><dt>담보인정</dt><dd>감정가의 최대 70%<small>규제지역은 규정 LTV 적용</small></dd></div>
-        <div><dt>생활안정자금</dt><dd>물건당 최대 1억 원</dd></div>
-        <div><dt>중도상환수수료</dt><dd>0.65% (3년)</dd></div>
-      </dl>
-    </article>
+  <div class="ptabs" role="tablist" aria-label="상품 종류">
+    <button role="tab" id="pt1" aria-controls="pp1" aria-selected="true">주택담보대출</button>
+    <button role="tab" id="pt2" aria-controls="pp2" aria-selected="false" tabindex="-1">사업자대출</button>
+    <button role="tab" id="pt3" aria-controls="pp3" aria-selected="false" tabindex="-1">전세자금대출</button>
+    <button role="tab" id="pt4" aria-controls="pp4" aria-selected="false" tabindex="-1">상가·특수대출</button>
   </div>
-  <dl class="prod__common">
-    <div><dt>대출한도</dt><dd>최대 50억 원 이내</dd></div>
-    <div><dt>신청 대상</dt><dd>NICE 개인신용평점 800점 이상</dd></div>
-    <div><dt>이자 납입</dt><dd>매월 후취</dd></div>
-    <div><dt>연체금리</dt><dd>대출금리 + 연 최대 3% (법정최고 20% 이내)</dd></div>
-    <div><dt>부대비용</dt><dd>화재보험·인지세·보증료·국민주택채권 매입비용 등</dd></div>
-  </dl>
+  <div class="ppanel" id="pp1" role="tabpanel" aria-labelledby="pt1">
+    <div class="ppanel__grid">
+      <article class="pcard">
+        <p class="pcard__tag">신규 · 추가 담보 · 전세퇴거자금</p>
+        <h3>주택담보대출</h3>
+        <p class="pcard__rate"><b>연 4.8 – 6.5%</b></p>
+        <dl class="kv">
+          <div><dt>대상 물건</dt><dd>아파트, 다세대, 단독주택, 주거용 오피스텔<small>오피스텔은 수도권 물건</small></dd></div>
+          <div><dt>대출 대상</dt><dd>소득 증빙이 가능한 개인</dd></div>
+          <div><dt>대출한도</dt><dd>최대 LTV 80%<small>선·후순위 가능, 지역 규제와 심사에 따라 달라짐</small></dd></div>
+          <div><dt>대출기간</dt><dd>개인(가계) 최장 30년 · 사업자(운전자금) 3년</dd></div>
+          <div><dt>상환방법</dt><dd>원리금균등분할, 원금균등분할</dd></div>
+          <div><dt>중도상환수수료</dt><dd>개인 0.56% · 사업자 0.3% (1년 기준)</dd></div>
+          <div><dt>연체이자율</dt><dd>대출금리 + 연체가산금리 최대 3% (최고 20% 이내)</dd></div>
+          <div><dt>부대비용</dt><dd>수입인지세 50% 고객 부담 (대출금액 5천만 원 초과 시)</dd></div>
+          <div><dt>이자 납부</dt><dd>매월 후취</dd></div>
+        </dl>
+      </article>
+      <div class="psubs">
+        <p class="psubs__title">세부 상품</p>
+      <details class="psub">
+        <summary>보통대출금 · 개인·개인사업자·법인</summary>
+        <dl class="kv">
+          <div><dt>대출 물건</dt><dd>아파트, 단독, 다세대, 연립주택 · 전국</dd></div>
+          <div><dt>대출한도</dt><dd>가계 감정가의 최대 70% · 사업자 KB시세의 최대 80%<small>지역·규제·심사에 따라 다름</small></dd></div>
+          <div><dt>대출금리</dt><dd>연 4.7 – 8.7%<small>신용점수와 선·후순위에 따라, 2026.9.30 기준</small></dd></div>
+          <div><dt>대출기간</dt><dd>가계 최장 30년 · 사업자 3 – 10년</dd></div>
+          <div><dt>상환방법</dt><dd>만기일시 또는 분할 (원금균등, 원리금균등, 일부원금균등)</dd></div>
+          <div><dt>중도상환수수료</dt><dd>3년 이내 0.6 – 0.78%, 일할 차감</dd></div>
+        </dl>
+      </details>
+      <details class="psub">
+        <summary>분할상환 모기지론 · 개인</summary>
+        <dl class="kv">
+          <div><dt>대출 물건</dt><dd>아파트, 단독, 다세대, 연립주택 · 전국</dd></div>
+          <div><dt>대출한도</dt><dd>감정가의 최대 70%<small>생활안정자금은 물건당 최대 1억 원</small></dd></div>
+          <div><dt>대출금리</dt><dd>연 4.7 – 8.7%<small>신용점수와 선·후순위에 따라, 2026.9.30 기준</small></dd></div>
+          <div><dt>대출기간</dt><dd>최장 30년</dd></div>
+          <div><dt>상환방법</dt><dd>분할상환 (원금균등, 원리금균등, 일부원금균등)</dd></div>
+          <div><dt>중도상환수수료</dt><dd>3년 이내 0.6% 이내, 일할 차감</dd></div>
+        </dl>
+      </details>
+      <details class="psub">
+        <summary>한도거래 대출 (마이너스 통장식)</summary>
+        <dl class="kv">
+          <div><dt>대출 대상</dt><dd>개인, 개인사업자, 법인사업자</dd></div>
+          <div><dt>대출한도</dt><dd>가계 감정가의 최대 70% · 사업자 KB시세의 최대 80%</dd></div>
+          <div><dt>대출금리</dt><dd>연 4.7 – 8.7%<small>2026.9.30 기준</small></dd></div>
+          <div><dt>대출기간</dt><dd>가계 최장 30년 · 사업자 3 – 10년</dd></div>
+          <div><dt>한도약정수수료</dt><dd>연 0.5% 이내</dd></div>
+        </dl>
+      </details>
+      <details class="psub">
+        <summary>필요 서류</summary>
+        <p>인감증명서 2통, 주민등록등본·초본 각 2부, 가족관계증명서, 신분증, 인감도장, 국세·지방세 완납증명서, 지방세 세목별 과세증명서, 사업자등록증 또는 전세계약서 사본, 재직증명서, 소득 서류, 전입세대열람원, 등기권리증 (외국인은 체류확인서)</p>
+      </details>
+      </div>
+    </div>
+  </div>
+  <div class="ppanel" id="pp2" role="tabpanel" aria-labelledby="pt2" hidden>
+    <div class="ppanel__grid">
+      <article class="pcard">
+        <p class="pcard__tag">운영자금 · 신규 · 추가 담보</p>
+        <h3>사업자담보대출</h3>
+        <p class="pcard__rate"><b>연 4.8 – 6.5%</b></p>
+        <dl class="kv">
+          <div><dt>대상 물건</dt><dd>아파트, 주택, 상가 등 부동산</dd></div>
+          <div><dt>대출 대상</dt><dd>사업자</dd></div>
+          <div><dt>대출한도</dt><dd>최대 LTV 80%<small>선·후순위 가능</small></dd></div>
+          <div><dt>대출기간</dt><dd>3년</dd></div>
+          <div><dt>상환방법</dt><dd>만기일시상환</dd></div>
+          <div><dt>중도상환수수료</dt><dd>0.3% · 한도약정수수료 0.5% (1년 기준)</dd></div>
+          <div><dt>연체이자율</dt><dd>대출금리 + 연체가산금리 최대 3% (최고 20% 이내)</dd></div>
+          <div><dt>부대비용</dt><dd>수입인지세 50% 고객 부담 (대출금액 5천만 원 초과 시)</dd></div>
+          <div><dt>이자 납부</dt><dd>매월 후취</dd></div>
+        </dl>
+      </article>
+      <div class="pnote"><b>이런 분께</b><p>사업 운영자금이 필요한 개인사업자·법인. 갖고 있는 아파트·주택·상가를 담보로 신규 또는 추가 대출을 받습니다.</p><p class="soft">사업자대출을 주택 구입에 쓰면 대출 회수와 최장 10년 신규 대출 제한을 받을 수 있습니다. 용도대로만 안내합니다.</p></div>
+    </div>
+  </div>
+  <div class="ppanel" id="pp3" role="tabpanel" aria-labelledby="pt3" hidden>
+    <div class="ppanel__grid">
+      <article class="pcard">
+        <p class="pcard__tag">세입자 · 전세금을 담보로</p>
+        <h3>전세금담보대출</h3>
+        <p class="pcard__rate"><b>전세보증금의 최대 80%</b></p>
+        <dl class="kv">
+          <div><dt>대출 대상</dt><dd>소득 증빙이 가능한 개인</dd></div>
+          <div><dt>대출금리</dt><dd>연 4.8 – 6.5% (변동)</dd></div>
+          <div><dt>1주택자</dt><dd>2억 원 이내<small>DSR 반영</small></dd></div>
+          <div><dt>취급 제한</dt><dd>규제지역 3억 초과 아파트 취득자<small>2025.10.20 이후 취득분</small></dd></div>
+          <div><dt>대출기간</dt><dd>전세계약 기간 이내 (연장 가능)</dd></div>
+          <div><dt>상환방법</dt><dd>만기일시상환</dd></div>
+          <div><dt>중도상환수수료</dt><dd>0.56% (1년 기준)</dd></div>
+          <div><dt>연체이자율</dt><dd>대출금리 + 연체가산금리 최대 3% (최고 20% 이내)</dd></div>
+          <div><dt>부대비용</dt><dd>수입인지세 50% 고객 부담 (대출금액 5천만 원 초과 시)</dd></div>
+          <div><dt>이자 납부</dt><dd>매월 후취</dd></div>
+        </dl>
+      </article>
+      <div class="pnote"><b>이런 분께</b><p>집이 있으면서 다른 곳에 전세로 들어가는 분. 은행 전세대출이 막히거나 한도가 모자랄 때 전세보증금을 담보로 받습니다.</p><p class="soft">내 경우 가능한지는 위 진단에서 먼저 확인할 수 있습니다.</p><a class="linklike" href="#check">가능 여부 진단하기</a></div>
+    </div>
+  </div>
+  <div class="ppanel" id="pp4" role="tabpanel" aria-labelledby="pt4" hidden>
+    <div class="ppanel__grid ppanel__grid--two">
+      <article class="pcard">
+        <p class="pcard__tag">상가건물 담보</p>
+        <h3>상가담보대출</h3>
+        <p class="pcard__rate"><b>연 4.8 – 6.5%</b></p>
+        <dl class="kv">
+          <div><dt>대출한도</dt><dd>최대 LTV 80%</dd></div>
+          <div><dt>대출기간</dt><dd>3년</dd></div>
+          <div><dt>상환방법</dt><dd>만기일시상환</dd></div>
+          <div><dt>중도상환수수료</dt><dd>0.3% · 한도약정수수료 0.5% (1년 기준)</dd></div>
+          <div><dt>연체이자율</dt><dd>대출금리 + 연체가산금리 최대 3% (최고 20% 이내)</dd></div>
+          <div><dt>부대비용</dt><dd>수입인지세 50% 고객 부담 (대출금액 5천만 원 초과 시)</dd></div>
+        </dl>
+      </article>
+      <article class="pcard">
+        <p class="pcard__tag">호텔 · 모텔 사업자</p>
+        <h3>숙박시설 담보대출</h3>
+        <p class="pcard__rate"><b>연 4.8 – 6.5%</b></p>
+        <dl class="kv">
+          <div><dt>대출 대상</dt><dd>호텔·모텔 사업자<small>생활형 숙박시설 불가</small></dd></div>
+          <div><dt>자금 용도</dt><dd>리모델링, 대환</dd></div>
+          <div><dt>대출한도</dt><dd>최대 LTV 80%<small>선·후순위 가능</small></dd></div>
+          <div><dt>대출기간</dt><dd>3년</dd></div>
+          <div><dt>상환방법</dt><dd>만기일시상환</dd></div>
+          <div><dt>중도상환수수료</dt><dd>0.3% · 한도약정수수료 0.5% (1년 기준)</dd></div>
+          <div><dt>이자 납부</dt><dd>매월 후취</dd></div>
+        </dl>
+      </article>
+    </div>
+  </div>
   <div class="prod__cta">
     <a class="btn btn--kakao" data-kakao="chat" href="https://pf.kakao.com/_XXXXXX/chat" target="_blank" rel="noopener">어떤 상품이 맞는지 카톡으로 묻기</a>
     <button type="button" class="btn btn--ghost js-quick">이름·번호 남기기</button>
@@ -297,7 +396,7 @@
     <p><b>[상호명]</b> · 대표 [성명] · 사업자등록번호 [000-00-00000] · [주소] · Tel [000-0000-0000]</p>
     <p>대출모집법인 등록번호 [00-00000000] (<a href="https://www.loanconsultant.or.kr" target="_blank" rel="noopener">대출모집인 포털에서 조회</a>) · 위탁 금융회사 [금융사명]. 당사는 금융회사와 위탁계약을 맺은 대출모집법인으로 금융상품 계약 체결 권한이 없으며, 불법 수수료 요구 등 불법영업행위를 하지 않습니다.</p>
     <p>당사는 고객에게 어떠한 수수료도 받지 않습니다. 수수료를 요구하면 불법이니 금융감독원(1332)에 신고하세요.</p>
-    <p>금융상품판매업자: [금융사명] · 가계대출 연 5.2% – 5.7%, 최초 360개월 · 임차보증금담보대출 연 5.2% – 5.7%, 전세기간 · 대출한도 최대 50억 원 이내 · 대상 NICE 개인신용평점 800점 이상 · 연체금리 대출금리 + 연 최대 3% (법정최고금리 20% 이내) · 이자 매월 후취 · 중도상환수수료 가계대출 0.65%(3년), 임차보증금담보대출 0.65%(2년) · 부대비용 화재보험·인지세·보증료·국민주택채권 매입비용 등.</p>
+    <p>금융상품판매업자: [금융사명] · 주택담보대출·사업자담보대출·전세금담보대출·상가담보대출 연 4.8% – 6.5% (변동금리), 세부 상품 연 4.7% – 8.7% (신용점수·선후순위에 따라, 2026.9.30 기준) · 대출한도 최대 LTV 80% (가계 감정가 70%, 지역·규제·심사에 따라 다름) · 대출기간 가계 최장 30년, 사업자 3년 · 연체이자율 대출금리 + 최대 3% (최고 20% 이내) · 중도상환수수료 개인 0.56%, 사업자 0.3% (1년 기준), 세부 상품 3년 이내 0.6 – 0.78% · 한도약정수수료 0.5% · 부대비용 수입인지세 50% 고객 부담 (5천만 원 초과 시), 국민주택채권 매입비용 등 · 이자 매월 후취.</p>
     <p>기준금리는 금융사의 자금조달에 요구되는 비용을 기준으로 산정하며, 가감금리는 업무원가·신용원가·정책마진·대출상환방법 등에 따라 달라집니다. 대출심사 결과에 따라 금리 및 한도가 차등 적용되며 대출이 제한될 수 있습니다. 담보물건의 종류에 따라 대출 조건이 차등 적용됩니다.</p>
     <p>금융소비자는 계약을 체결하기 전에 금융상품설명서 및 약관 등을 읽어 보시기 바랍니다. 금융소비자는 금융소비자보호법 제19조 제1항에 따라 상품에 대한 설명을 받을 권리가 있습니다. 상환능력에 비해 대출금이 과도하면 개인신용평점이 하락할 수 있고, 금융거래 관련 불이익이 발생할 수 있습니다. 원리금 연체 시 계약만료 기한 전에 모든 원리금을 변제해야 할 의무가 발생할 수 있습니다.</p>
     <p>분쟁 발생 시 금융감독원(1332), 한국소비자원(1372)</p>
@@ -346,6 +445,6 @@
   <form method="dialog"><button class="btn btn--small">닫기</button></form>
 </dialog>
 
-<script src="main.js?v=9"></script>
+<script src="main.js?v=10"></script>
 </body>
 </html>

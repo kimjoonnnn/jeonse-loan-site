@@ -275,29 +275,48 @@ body{padding-bottom:78px}
 
 /* 상품 안내 */
 .prod{padding-top:80px;padding-bottom:80px}
-.prod__head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:28px}
+.prod__head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:24px}
 .prod h2{font-size:clamp(24px,3vw,32px);font-weight:800}
-.prod__date{margin:0;font-size:14px;color:var(--ink-2)}
-.prod__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.prod__date{margin:0;font-size:14px;color:var(--ink-2);max-width:30em;text-align:right}
+.ptabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.ptabs button{padding:12px 20px;background:var(--tint);border:0;border-radius:999px;font:inherit;font-size:15px;font-weight:700;color:var(--ink);cursor:pointer}
+.ptabs button:hover{background:var(--brand-soft)}
+.ptabs button[aria-selected="true"]{background:var(--brand);color:#fff}
+.ppanel[hidden]{display:none}
+.ppanel__grid{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;align-items:start}
 .pcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 22px}
 .pcard__tag{margin:0 0 6px;font-size:13px;font-weight:700;color:var(--brand)}
 .pcard h3{margin:0;font-size:20px}
 .pcard__rate{margin:10px 0 18px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:24px;color:var(--ink)}
-.pcard .kv div{grid-template-columns:100px 1fr}
-.pcard .kv dd small{display:block;font-weight:400;font-size:13px;color:var(--ink-2)}
-.prod__common{margin:16px 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.prod__common div{background:var(--tint);padding:14px 16px}
-.prod__common dt{font-size:13px;color:var(--ink-2)}
-.prod__common dd{margin:2px 0 0;font-size:14px;font-weight:700}
+.pcard .kv,.psub .kv{gap:10px}
+.pcard .kv div,.psub .kv div{grid-template-columns:110px 1fr}
+.kv dd small{display:block;font-weight:400;font-size:13px;color:var(--ink-2)}
+.psubs{display:grid;gap:8px}
+.psubs__title{margin:0 0 4px;font-size:14px;font-weight:700;color:var(--ink-2)}
+.psub{background:var(--tint);border-radius:12px;padding:0 18px}
+.psub summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-weight:700;cursor:pointer}
+.psub summary::-webkit-details-marker{display:none}
+.psub summary::after{content:"+";color:var(--brand);font-size:20px;line-height:1}
+.psub[open] summary::after{content:"−"}
+.psub .kv,.psub p{padding-bottom:18px;margin:0}
+.psub p{font-size:14px;color:var(--ink-2)}
+.psub .kv dd{font-size:15px}
+.pnote{background:var(--tint);border-radius:14px;padding:24px 22px}
+.pnote b{font-size:17px}
+.pnote p{margin:8px 0 0}
+.pnote .linklike{display:inline-block;margin-top:12px;font-weight:700}
+.ppanel__grid--two{grid-template-columns:1fr 1fr}
 .prod__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .btn--ghost{background:#fff;color:var(--brand);box-shadow:inset 0 0 0 1.5px var(--brand)}
 .btn--ghost:hover{background:var(--brand-soft)}
 @media (max-width:900px){
   .prod{padding-top:56px;padding-bottom:56px}
   .prod__head{flex-direction:column;align-items:flex-start}
-  .prod__grid{grid-template-columns:1fr}
-  .prod__common{grid-template-columns:1fr 1fr}
-  .prod__common div:last-child{grid-column:1/-1}
+  .prod__date{text-align:left}
+  .ptabs{display:grid;grid-template-columns:1fr 1fr}
+  .ptabs button{border-radius:10px;padding:12px 8px}
+  .ppanel__grid,.ppanel__grid--two{grid-template-columns:1fr}
+  .pcard .kv div,.psub .kv div{grid-template-columns:96px 1fr}
   .prod__cta .btn{flex:1 1 100%}
 }
 .quick.flash{box-shadow:0 -6px 24px rgba(10,18,34,.18),inset 0 0 0 3px #fee500}
