@@ -86,7 +86,7 @@ p{margin:0}
 
 /* 사진 띠 */
 .band{margin:0}
-.band img{display:block;width:100%;height:clamp(220px,32vw,400px);object-fit:cover;border-radius:var(--radius)}
+.band img{display:block;width:100%;height:clamp(220px,34vw,460px);object-fit:cover;object-position:50% 55%;border-radius:var(--radius)}
 .band figcaption{margin-top:10px;font-size:14px;color:var(--ink-2)}
 
 /* 상황별 기준 */
@@ -111,12 +111,12 @@ p{margin:0}
 .bands i{font-style:normal;font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:99px}
 
 /* 상담하면 받는 것 */
-.flow{background:var(--tint);padding-top:80px;padding-bottom:80px;display:grid;grid-template-columns:280px 1fr;column-gap:40px}
-.flow h2{grid-column:2;margin-bottom:28px}
+.flow{background:var(--tint);padding-top:80px;padding-bottom:80px;display:grid;grid-template-columns:minmax(0,880px);justify-content:center}
+.flow h2{grid-column:1;margin-bottom:28px}
 .flow__pic{grid-column:1;grid-row:1 / span 4;margin:0;position:sticky;top:90px;align-self:start}
 .flow__pic img{width:100%;height:auto;display:block;border-radius:var(--radius)}
 .flow__pic figcaption{margin-top:8px;font-size:13px;color:var(--ink-2)}
-.ex{grid-column:2;background:#fff;border-radius:var(--radius);padding:24px;margin-bottom:16px}
+.ex{grid-column:1;background:#fff;border-radius:var(--radius);padding:24px;margin-bottom:16px}
 .ex__say{font-size:18px;font-weight:700;margin-bottom:14px}
 .ex__call{background:var(--tint);border-radius:10px;padding:16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .ex__res{margin-top:10px;background:var(--tint);border-radius:10px;padding:16px;font-size:15px}
@@ -229,7 +229,6 @@ dialog p{font-size:14px;margin:14px 0 18px;color:var(--ink-2)}
   .bands i{justify-self:start;order:-1}
   .flow{display:flex;flex-direction:column;padding-top:56px;padding-bottom:56px}
   .flow h2{order:-1}
-  .flow__pic{position:static;margin-bottom:16px}
   .range td:nth-child(3){display:none}
   .consult{display:block;padding-top:56px;padding-bottom:56px}
   .consult__pic{margin-top:32px}
@@ -242,20 +241,20 @@ dialog p{font-size:14px;margin:14px 0 18px;color:var(--ink-2)}
 }
 
 /* 하단 고정 간편 상담 신청 */
-.quick{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--dark);color:#fff;box-shadow:0 -6px 24px rgba(10,18,34,.18)}
+.quick{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--brand);color:#fff;box-shadow:0 -8px 28px rgba(31,79,209,.35)}
 .quick__in{max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px}
 .quick__title{margin:0;display:flex;flex-direction:column;line-height:1.35;flex:none}
-.quick__title b{font-size:18px}
-.quick__title span{font-size:13px;color:#aab4c6}
+.quick__title b{font-size:20px;font-weight:800}
+.quick__title span{font-size:13px;color:#dbe5ff}
 .quick__form{flex:1;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end;position:relative}
 .quick__form input[type=text],.quick__form input[type=tel]{height:46px;border:0;border-radius:10px;padding:0 14px;font:inherit;font-size:16px;color:var(--ink);background:#fff;width:150px}
 .quick__form input[type=tel]{width:180px}
-.quick__agree{display:flex;align-items:center;gap:6px;font-size:13px;color:#d6dce7;cursor:pointer}
-.quick__agree input{width:18px;height:18px;accent-color:var(--brand)}
+.quick__agree{display:flex;align-items:center;gap:6px;font-size:13px;color:#eef3ff;cursor:pointer}
+.quick__agree input{width:18px;height:18px;accent-color:#ff6a2b}
 .quick__agree .linklike{color:#fff}
-.quick__go{height:46px;border:0;border-radius:10px;padding:0 22px;background:var(--brand);color:#fff;font:inherit;font-weight:700;font-size:16px;cursor:pointer}
-.quick__go:hover{background:#2c5ce6}
-.quick__msg{position:absolute;right:0;top:-30px;margin:0;font-size:13px;color:#ffd666}
+.quick__go{height:46px;border:0;border-radius:10px;padding:0 26px;background:#ff6a2b;color:#fff;font:inherit;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.quick__go:hover{background:#f25a18}
+.quick__msg{position:absolute;right:0;top:-30px;margin:0;font-size:13px;color:#fff;background:var(--ink);padding:4px 10px;border-radius:6px}
 .quick__msg:empty{display:none}
 .quick__x{display:none}
 body{padding-bottom:78px}
@@ -268,8 +267,8 @@ body{padding-bottom:78px}
   .quick__form{flex-direction:column;align-items:stretch;gap:10px}
   .quick__form input[type=text],.quick__form input[type=tel]{width:100%}
   .quick__msg{position:static;order:5}
-  .quick__x{display:block;position:absolute;right:12px;top:12px;background:none;border:0;color:#aab4c6;font:inherit;font-size:14px;padding:8px;cursor:pointer}
-  .mbar button{display:flex;align-items:center;justify-content:center;height:48px;border-radius:10px;background:var(--brand);color:#fff;border:0;font:inherit;font-weight:700;font-size:16px;cursor:pointer}
+  .quick__x{display:block;position:absolute;right:12px;top:12px;background:none;border:0;color:#dbe5ff;font:inherit;font-size:14px;padding:8px;cursor:pointer}
+  .mbar button{display:flex;align-items:center;justify-content:center;height:48px;border-radius:10px;background:#ff6a2b;color:#fff;border:0;font:inherit;font-weight:700;font-size:16px;cursor:pointer}
 }
 @media (prefers-reduced-motion:reduce){.quick{transition:none}}
 

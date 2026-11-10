@@ -195,33 +195,6 @@ document.querySelectorAll('[role="tablist"]').forEach((list) => {
   });
 });
 
-/* ───────── FAQ: 넓은 화면은 오른쪽 답 하나, 좁은 화면은 아래로 펼침 ───────── */
-const pane = document.getElementById('faqPane');
-const qs = [...document.querySelectorAll('#faqList button')];
-const wide = { matches: false }; // 질문 아래로 펼치는 방식만 사용
-function pick(b, toggle) {
-  if (wide.matches) {
-    qs.forEach((x) => x.setAttribute('aria-expanded', x === b));
-    pane.style.opacity = 0;
-    setTimeout(() => { pane.innerHTML = document.getElementById(b.getAttribute('aria-controls')).innerHTML; pane.style.opacity = 1; }, 120);
-  } else {
-    const open = toggle ? b.getAttribute('aria-expanded') !== 'true' : true;
-    qs.forEach((x) => {
-      const on = x === b && open;
-      x.setAttribute('aria-expanded', on);
-      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
-    });
-  }
-}
-qs.forEach((b) => {
-  b.addEventListener('click', () => pick(b, true));
-  b.addEventListener('mouseenter', () => wide.matches && pick(b));
-  b.addEventListener('focus', () => wide.matches && pick(b));
-});
-qs.forEach((x, i) => { document.getElementById(x.getAttribute('aria-controls')).hidden = i !== 0; });
-pane.innerHTML = document.getElementById('a1').innerHTML;
-pane.removeAttribute('aria-hidden');
-
 /* ───────── 상담 신청 (본문 폼 · 하단 고정 폼 공통) ───────── */
 const fmtPhone = (v) => {
   const d = v.replace(/\D/g, '').slice(0, 11);
@@ -277,8 +250,8 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
   const groups = [
     ['.hero__copy', 'h1, .hero__lead, .btn, .hero__date'],
     ['.cases', 'h2, .cases__head .btn, .tabs button, .bands li'],
+    ['.prod', 'h2, .prod__date, .ptabs button'],
     ['.flow', 'h2, .ex'],
-    ['.faq', 'h2, .faq__list li, .faq__pane'],
     ['.consult', 'h2, .one, .reach > div'],
   ];
   const io = new IntersectionObserver((es) => es.forEach((en) => {

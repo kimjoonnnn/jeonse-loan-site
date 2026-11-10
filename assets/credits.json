@@ -1,29 +1,5 @@
 [
  {
-  "file": "assets/wide-view-of-nowon-gu-apartment-buildings.jpg",
-  "media": "image",
-  "ref": "openverse:bae51891-2d8c-4986-b0a2-d1e1f0ef23c4",
-  "title": "Wide view of Nowon-gu Apartment buildings",
-  "creator": "Ox1997cow",
-  "creatorUrl": "https://commons.wikimedia.org/wiki/User:Ox1997cow",
-  "date": null,
-  "license": "CC BY-SA 3.0",
-  "licenseCode": "by-sa",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
-  "creditRequired": true,
-  "page": "https://commons.wikimedia.org/w/index.php?curid=121586717",
-  "via": "Wikimedia Commons",
-  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Wide_view_of_Nowon-gu_Apartment_buildings.jpg/1920px-Wide_view_of_Nowon-gu_Apartment_buildings.jpg",
-  "width": 1920,
-  "height": 864,
-  "bytes": 397335,
-  "credit": "\"Wide view of Nowon-gu Apartment buildings\" by Ox1997cow, CC BY-SA 3.0, via Wikimedia Commons",
-  "notes": [
-   "Share-alike: an altered version (recoloured, combined with other pictures) must be shared under the same licence."
-  ],
-  "saved": "2026-11-09T14:30:00.879Z"
- },
- {
   "file": "assets/daechi-dongbo-centreville-apartment-complex-2.jpg",
   "media": "image",
   "ref": "commons:126580208",
@@ -48,54 +24,6 @@
   "saved": "2026-11-09T14:30:02.824Z"
  },
  {
-  "file": "assets/jamsil-apartment-complex-phase-5-6196571900.jpg",
-  "media": "image",
-  "ref": "openverse:b83161e7-015b-4e76-877e-cbb7a43158bd",
-  "title": "Jamsil Apartment Complex Phase 5 (6196571900)",
-  "creator": "InSapphoWeTrust from Los Angeles, California, USA",
-  "creatorUrl": "https://www.flickr.com/people/56619626@N05",
-  "date": null,
-  "license": "CC BY-SA 2.0",
-  "licenseCode": "by-sa",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
-  "creditRequired": true,
-  "page": "https://commons.wikimedia.org/w/index.php?curid=24268421",
-  "via": "Wikimedia Commons",
-  "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Jamsil_Apartment_Complex_Phase_5_%286196571900%29.jpg",
-  "width": 1600,
-  "height": 1200,
-  "bytes": 370099,
-  "credit": "\"Jamsil Apartment Complex Phase 5 (6196571900)\" by InSapphoWeTrust from Los Angeles, California, USA, CC BY-SA 2.0, via Wikimedia Commons",
-  "notes": [
-   "Share-alike: an altered version (recoloured, combined with other pictures) must be shared under the same licence."
-  ],
-  "saved": "2026-11-09T14:30:10.353Z"
- },
- {
-  "file": "assets/inwangsan-ipark-cropped.jpg",
-  "media": "image",
-  "ref": "commons:131963300",
-  "title": "Inwangsan IPark (cropped)",
-  "creator": "MonasteryInwang",
-  "creatorUrl": null,
-  "date": "2023-04-08",
-  "license": "CC BY-SA 4.0",
-  "licenseCode": "by-sa",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "creditRequired": true,
-  "page": "https://commons.wikimedia.org/wiki/File:Inwangsan_IPark_(cropped).jpg",
-  "via": "Wikimedia Commons",
-  "image": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Inwangsan_IPark_%28cropped%29.jpg",
-  "width": 1617,
-  "height": 1612,
-  "bytes": 948118,
-  "credit": "\"Inwangsan IPark (cropped)\" by MonasteryInwang, CC BY-SA 4.0, via Wikimedia Commons",
-  "notes": [
-   "Share-alike: an altered version (recoloured, combined with other pictures) must be shared under the same licence."
-  ],
-  "saved": "2026-11-09T14:30:12.440Z"
- },
- {
   "file": "assets/2006-01-29-view-from-my-yaeumdong.jpg",
   "media": "image",
   "ref": "openverse:6f82e9ad-3401-465b-ac44-299a1f558515",
@@ -116,5 +44,21 @@
   "credit": "\"2006-01-29 View from my Yaeumdong apartment window 01\" by Stephen Hucker, CC BY 2.0, via Flickr",
   "notes": [],
   "saved": "2026-11-09T14:31:16.278Z"
+ },
+ {
+  "file": "assets/img/seongsu.jpg",
+  "title": "Apartment buildings near Seongsu Bridge",
+  "creator": "Ox1997cow",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/w/index.php?curid=134974672",
+  "via": "Wikimedia Commons"
+ },
+ {
+  "file": "assets/img/raemian.jpg",
+  "title": "N Seoul Tower and Raemian Caelitus",
+  "creator": "Matt Kieffer",
+  "license": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/w/index.php?curid=108217188",
+  "via": "Wikimedia Commons"
  }
 ]
