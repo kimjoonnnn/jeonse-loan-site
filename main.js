@@ -264,6 +264,10 @@ const setQuick = (on) => {
 };
 quickOpen.addEventListener('click', () => setQuick(!quick.classList.contains('open')));
 document.getElementById('quickClose').addEventListener('click', () => setQuick(false));
+document.querySelectorAll('.js-quick').forEach((b) => b.addEventListener('click', () => {
+  if (matchMedia('(max-width:900px)').matches) setQuick(true);
+  else { quick.classList.add('flash'); setTimeout(() => quick.classList.remove('flash'), 900); document.getElementById('qName').focus(); }
+}));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && quick.classList.contains('open')) setQuick(false); });
 
 document.querySelectorAll('[data-open]').forEach((b) => b.addEventListener('click', () => document.getElementById(b.dataset.open).showModal()));
