@@ -240,3 +240,35 @@ dialog p{font-size:14px;margin:14px 0 18px;color:var(--ink-2)}
   .mbar a{display:flex;align-items:center;justify-content:center;height:48px;border-radius:10px;background:var(--tint);text-decoration:none;font-weight:700}
   .mbar .mbar__main{background:#fee500;color:#191919}
 }
+
+/* 하단 고정 간편 상담 신청 */
+.quick{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--dark);color:#fff;box-shadow:0 -6px 24px rgba(10,18,34,.18)}
+.quick__in{max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px}
+.quick__title{margin:0;display:flex;flex-direction:column;line-height:1.35;flex:none}
+.quick__title b{font-size:18px}
+.quick__title span{font-size:13px;color:#aab4c6}
+.quick__form{flex:1;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end;position:relative}
+.quick__form input[type=text],.quick__form input[type=tel]{height:46px;border:0;border-radius:10px;padding:0 14px;font:inherit;font-size:16px;color:var(--ink);background:#fff;width:150px}
+.quick__form input[type=tel]{width:180px}
+.quick__agree{display:flex;align-items:center;gap:6px;font-size:13px;color:#d6dce7;cursor:pointer}
+.quick__agree input{width:18px;height:18px;accent-color:var(--brand)}
+.quick__agree .linklike{color:#fff}
+.quick__go{height:46px;border:0;border-radius:10px;padding:0 22px;background:var(--brand);color:#fff;font:inherit;font-weight:700;font-size:16px;cursor:pointer}
+.quick__go:hover{background:#2c5ce6}
+.quick__msg{position:absolute;right:0;top:-30px;margin:0;font-size:13px;color:#ffd666}
+.quick__msg:empty{display:none}
+.quick__x{display:none}
+body{padding-bottom:78px}
+.toast{bottom:110px}
+@media (max-width:900px){
+  body{padding-bottom:0}
+  .quick{bottom:calc(68px + env(safe-area-inset-bottom));transform:translateY(calc(100% + 80px));transition:transform .25s ease;visibility:hidden;border-radius:16px 16px 0 0}
+  .quick.open{transform:none;visibility:visible}
+  .quick__in{flex-direction:column;align-items:stretch;gap:14px;padding:20px 16px 16px}
+  .quick__form{flex-direction:column;align-items:stretch;gap:10px}
+  .quick__form input[type=text],.quick__form input[type=tel]{width:100%}
+  .quick__msg{position:static;order:5}
+  .quick__x{display:block;position:absolute;right:12px;top:12px;background:none;border:0;color:#aab4c6;font:inherit;font-size:14px;padding:8px;cursor:pointer}
+  .mbar button{display:flex;align-items:center;justify-content:center;height:48px;border-radius:10px;background:var(--brand);color:#fff;border:0;font:inherit;font-weight:700;font-size:16px;cursor:pointer}
+}
+@media (prefers-reduced-motion:reduce){.quick{transition:none}}

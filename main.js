@@ -63,7 +63,7 @@ const Q = {
 
 const RESULTS = {
   R_local: () => ({ v: 'go', label: '진행 검토 가능', title: '1억 상한 없이 담보와 소득으로 한도가 나옵니다',
-    rows: [['상한 없음', '수도권·규제지역이 아니면 한도는 금융사가 정합니다'], ['DSR 50%', '신협 등 2금융권 기준 (은행 40%)'], ['3.6억', '주택 6억 이하·부부 소득 7천만 원 이하라면 보금자리론 반환 용도도 가능']] }),
+    rows: [['상한 없음', '수도권·규제지역이 아니면 한도는 금융사가 정합니다'], ['DSR 50%', '2금융권 기준 (은행 40%)'], ['3.6억', '주택 6억 이하·부부 소득 7천만 원 이하라면 보금자리론 반환 용도도 가능']] }),
   R_multi: () => ({ v: 'no', label: '원칙상 어려움', title: '수도권 2주택 이상은 반환 목적 주담대가 막혀 있습니다',
     rows: [['불가', '수도권·규제지역 2주택 이상 생활안정자금 주담대 (2025.6.28 시행)'], ['확인', '분양권·상속·인구감소지역 주택처럼 주택 수에서 빠지는 집이 있는지'], ['확인', '지방에 있는 주택을 담보로 쓸 수 있는지']],
     cta: '카톡으로 대안 묻기' }),
@@ -79,9 +79,9 @@ const RESULTS = {
       ['RTI 1.25배', '연 임대소득이 대출 이자의 1.25배 이상 (주택 기준)'],
       ['주의', '수도권·규제지역 아파트는 만기연장 불가 (2026.4.17 시행), 의무임대기간 종료일까지는 예외']] }),
   R_t_none: () => ({ v: 'go', label: '일반 전세대출 대상', title: '무주택이면 유주택자 규제가 적용되지 않습니다',
-    rows: [['80%', '전세보증금의 최대 80% 이내 (관악신협 전세금담보대출)'], ['확인', '소득과 신용(NICE 800점 이상)으로 실제 한도가 정해집니다']] }),
+    rows: [['80%', '전세보증금의 최대 80% 이내 (전세금담보대출 기준)'], ['확인', '소득과 신용(NICE 800점 이상)으로 실제 한도가 정해집니다']] }),
   R_t_multi: () => ({ v: 'no', label: '원칙상 불가', title: '부부 합산 2주택 이상은 전세보증이 나오지 않습니다',
-    rows: [['불가', '주택금융공사·주택도시보증공사·서울보증 모두 원칙상 불가'], ['재진단', '한 채를 처분해 1주택이 되면 다시 가능 · 신협 상품 취급 여부는 상담에서 확인'], ['다른 길', '세놓은 집의 보증금 반환대출이 필요하다면 집주인으로 진단']],
+    rows: [['불가', '주택금융공사·주택도시보증공사·서울보증 모두 원칙상 불가'], ['재진단', '한 채를 처분해 1주택이 되면 다시 가능 · 제휴 금융사 취급 여부는 상담에서 확인'], ['다른 길', '세놓은 집의 보증금 반환대출이 필요하다면 집주인으로 진단']],
     cta: '카톡으로 처분 계획 묻기', alt: { t: '집주인으로 다시 진단', go: 'owner', set: { who: '집주인' } } }),
   R_t_local: () => ({ v: 'go', label: '가능', title: '지방에 집 1채면 2억까지 검토합니다',
     rows: [['2억', '1주택자 전세금담보대출 한도 (DSR 반영)'], ['80%', '전세보증금의 80% 이내'], ['확인', '소득과 신용으로 실제 한도 결정']] }),
@@ -222,31 +222,49 @@ qs.forEach((x, i) => { document.getElementById(x.getAttribute('aria-controls')).
 pane.innerHTML = document.getElementById('a1').innerHTML;
 pane.removeAttribute('aria-hidden');
 
-/* ───────── 상담 신청 ───────── */
-const form = document.getElementById('consultForm');
-const phone = document.getElementById('phone');
-const msg = document.getElementById('formMsg');
-phone.addEventListener('input', () => {
-  const d = phone.value.replace(/\D/g, '').slice(0, 11);
-  phone.value = d.length < 4 ? d : d.length < 8 ? `${d.slice(0, 3)}-${d.slice(3)}` : `${d.slice(0, 3)}-${d.slice(3, d.length - 4)}-${d.slice(-4)}`;
+/* ───────── 상담 신청 (본문 폼 · 하단 고정 폼 공통) ───────── */
+const fmtPhone = (v) => {
+  const d = v.replace(/\D/g, '').slice(0, 11);
+  return d.length < 4 ? d : d.length < 8 ? `${d.slice(0, 3)}-${d.slice(3)}` : `${d.slice(0, 3)}-${d.slice(3, d.length - 4)}-${d.slice(-4)}`;
+};
+document.querySelectorAll('.js-lead').forEach((f) => {
+  const tel = f.querySelector('.js-phone');
+  const note = f.querySelector('.js-msg');
+  const btn = f.querySelector('button[type="submit"]');
+  const label = btn.textContent;
+  tel.addEventListener('input', () => { tel.value = fmtPhone(tel.value); });
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const nm = f.elements.namedItem('name');
+    if (nm && !nm.value.trim()) { note.textContent = '성함을 입력해 주세요.'; nm.focus(); return; }
+    if (!/^01[016789]-?\d{3,4}-?\d{4}$/.test(tel.value)) { note.textContent = '휴대폰 번호를 확인해 주세요.'; tel.focus(); return; }
+    if (!f.agree.checked) { note.textContent = '개인정보 수집·이용에 동의해야 신청할 수 있습니다.'; f.agree.focus(); return; }
+    f.querySelector('.js-diagnosis').value = diagnosisText();
+    // TODO: action에 접수처 연결 (Google Apps Script → 시트, Formspree 등)
+    if (!f.getAttribute('action')) { note.textContent = '접수처가 아직 연결되지 않았습니다. (오픈 전 설정)'; return; }
+    btn.disabled = true; btn.textContent = '보내는 중';
+    try {
+      const res = await fetch(f.action, { method: 'POST', body: new FormData(f), headers: { Accept: 'application/json' } });
+      if (!res.ok) throw new Error();
+      f.reset();
+      note.textContent = '접수됐습니다. 영업일 기준 당일 전화드립니다.';
+    } catch {
+      note.textContent = '전송에 실패했습니다. 전화나 카카오톡으로 연락 주세요.';
+    } finally { btn.disabled = false; btn.textContent = label; }
+  });
 });
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  if (!/^01[016789]-?\d{3,4}-?\d{4}$/.test(phone.value)) { msg.textContent = '휴대폰 번호를 확인해 주세요.'; phone.focus(); return; }
-  if (!form.agree.checked) { msg.textContent = '개인정보 수집·이용에 동의해야 신청할 수 있습니다.'; form.agree.focus(); return; }
-  const btn = form.querySelector('.one__row button');
-  // TODO: action에 접수처 연결 (Google Apps Script → 시트, Formspree 등)
-  if (!form.getAttribute('action')) { msg.textContent = '접수처가 아직 연결되지 않았습니다. (오픈 전 설정)'; return; }
-  btn.disabled = true; btn.textContent = '보내는 중';
-  try {
-    const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
-    if (!res.ok) throw new Error();
-    form.reset();
-    msg.textContent = '접수됐습니다. 영업일 기준 당일 전화드립니다.';
-  } catch {
-    msg.textContent = '전송에 실패했습니다. 전화나 카카오톡으로 연락 주세요.';
-  } finally { btn.disabled = false; btn.textContent = '신청'; }
-});
+
+/* 모바일: 하단 바 [상담신청]으로 고정 폼 열기 */
+const quick = document.getElementById('quick');
+const quickOpen = document.getElementById('quickOpen');
+const setQuick = (on) => {
+  quick.classList.toggle('open', on);
+  quickOpen.setAttribute('aria-expanded', String(on));
+  if (on) setTimeout(() => document.getElementById('qName').focus({ preventScroll: true }), 150);
+};
+quickOpen.addEventListener('click', () => setQuick(!quick.classList.contains('open')));
+document.getElementById('quickClose').addEventListener('click', () => setQuick(false));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && quick.classList.contains('open')) setQuick(false); });
 
 document.querySelectorAll('[data-open]').forEach((b) => b.addEventListener('click', () => document.getElementById(b.dataset.open).showModal()));
 
